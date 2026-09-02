@@ -56,6 +56,8 @@ const navSearch =
 const navFavorites =
     document.getElementById("navFavorites");
 
+ const planTypeScreen = document.getElementById("planTypeScreen");
+
 
 /* ================================
    FAVORITOS
@@ -136,6 +138,12 @@ function showWelcome() {
     questionsScreen.classList.add("hidden");
 
     resultScreen.classList.add("hidden");
+
+    planTypeScreen.classList.add("hidden");
+
+    ideaScreen.classList.add("hidden");
+
+    ideaResultScreen.classList.add("hidden");
 }
 
 
@@ -146,6 +154,12 @@ function showQuestions() {
     questionsScreen.classList.remove("hidden");
 
     resultScreen.classList.add("hidden");
+
+    planTypeScreen.classList.add("hidden");
+
+    ideaScreen.classList.add("hidden");
+
+    ideaResultScreen.classList.add("hidden");
 }
 
 
@@ -156,8 +170,13 @@ function showResults() {
     questionsScreen.classList.add("hidden");
 
     resultScreen.classList.remove("hidden");
-}
 
+    planTypeScreen.classList.add("hidden");
+
+    ideaScreen.classList.add("hidden");
+
+    ideaResultScreen.classList.add("hidden");
+}
 
 /* ================================
    INICIO
@@ -167,12 +186,40 @@ startButton.addEventListener(
     "click",
     () => {
 
-        showQuestions();
+        welcomeScreen.classList.add("hidden");
+        questionsScreen.classList.add("hidden");
+        resultScreen.classList.add("hidden");
+        planTypeScreen.classList.remove("hidden");
 
     }
 );
+const findPlaceButton = document.getElementById("findPlaceButton");
 
+findPlaceButton.addEventListener(
+    "click",
+    () => {
 
+        planTypeScreen.classList.add("hidden");
+        questionsScreen.classList.remove("hidden");
+
+    }
+);
+const ideaScreen = document.getElementById("ideaScreen");
+const ideaButton = document.getElementById("ideaButton");
+const ideaResultScreen = document.getElementById("ideaResultScreen");
+const ideaResult = document.getElementById("ideaResult");
+const generateIdeaButton = document.getElementById("generateIdeaButton");
+const anotherIdeaButton = document.getElementById("anotherIdeaButton");
+
+ideaButton.addEventListener(
+    "click",
+    () => {
+
+        planTypeScreen.classList.add("hidden");
+        ideaScreen.classList.remove("hidden");
+
+    }
+);
 /* ================================
    NAVEGACIÓN
 ================================ */
@@ -241,6 +288,289 @@ document
             }
         );
     });
+    let ideaPeople = null;
+let ideaMoney = null;
+let ideaMood = null;
+const ideas = [
+
+    // 🚲 AVENTURA
+    {
+        mood: "aventura",
+        title: "🚲 Ruta en bici",
+        text: "Haz una ruta en bicicleta por una zona tranquila y descubre nuevos lugares.",
+        time: "1-2 horas",
+        maxBudget: 5,
+        minPeople: 1
+    },
+    {
+        mood: "aventura",
+        title: "🌳 Exploración de un parque",
+        text: "Explora un parque que no conozcáis y buscad rincones interesantes.",
+        time: "1 hora",
+        maxBudget: 0,
+        minPeople: 1
+    },
+    {
+        mood: "aventura",
+        title: "📸 Ruta de fotos",
+        text: "Salid a descubrir vuestra zona y haced fotos de los lugares más curiosos.",
+        time: "1-2 horas",
+        maxBudget: 0,
+        minPeople: 1
+    },
+
+    // 🎮 VIDEOJUEGOS
+    {
+        mood: "videojuegos",
+        title: "🎮 Torneo de videojuegos",
+        text: "Organizad un pequeño torneo y competid por conseguir la mayor puntuación.",
+        time: "1-2 horas",
+        maxBudget: 0,
+        minPeople: 2
+    },
+    {
+        mood: "videojuegos",
+        title: "🏆 Campeonato de puntuaciones",
+        text: "Elegid varios juegos y apuntad las puntuaciones de cada jugador.",
+        time: "1 hora",
+        maxBudget: 0,
+        minPeople: 2
+    },
+    {
+        mood: "videojuegos",
+        title: "🎲 Noche de juegos",
+        text: "Elegid varios juegos y cambiad de juego cada cierto tiempo.",
+        time: "2 horas",
+        maxBudget: 10,
+        minPeople: 2
+    },
+
+    // 🏃 DEPORTE
+    {
+        mood: "deporte",
+        title: "⚽ Partido improvisado",
+        text: "Montad un partido y dividíos en equipos.",
+        time: "1 hora",
+        maxBudget: 0,
+        minPeople: 4
+    },
+    {
+        mood: "deporte",
+        title: "🏀 Reto de tiros",
+        text: "Id a una cancha y organizad diferentes rondas de tiros.",
+        time: "45-60 minutos",
+        maxBudget: 0,
+        minPeople: 2
+    },
+    {
+        mood: "deporte",
+        title: "🏃 Circuito deportivo",
+        text: "Preparad varias pruebas deportivas sencillas y puntuad cada ronda.",
+        time: "1 hora",
+        maxBudget: 0,
+        minPeople: 2
+    },
+
+    // 🎨 CREATIVO
+    {
+        mood: "creativo",
+        title: "🎨 Concurso de dibujo",
+        text: "Elegid un tema y haced un dibujo. Después votad vuestro favorito.",
+        time: "45 minutos",
+        maxBudget: 5,
+        minPeople: 2
+    },
+    {
+        mood: "creativo",
+        title: "🧱 Construcción creativa",
+        text: "Construid algo usando materiales que tengáis por casa.",
+        time: "1 hora",
+        maxBudget: 5,
+        minPeople: 1
+    },
+    {
+        mood: "creativo",
+        title: "🎬 Grabad un corto",
+        text: "Inventad una pequeña historia y grabad vuestro propio cortometraje.",
+        time: "1-2 horas",
+        maxBudget: 0,
+        minPeople: 2
+    },
+
+    // 🧩 JUEGOS
+    {
+        mood: "juegos",
+        title: "🧩 Búsqueda del tesoro",
+        text: "Esconded pistas y cread una pequeña búsqueda del tesoro.",
+        time: "1 hora",
+        maxBudget: 5,
+        minPeople: 2
+    },
+    {
+        mood: "juegos",
+        title: "🕵️ Misterio por equipos",
+        text: "Inventad un misterio y cread pistas para que los demás lo resuelvan.",
+        time: "1 hora",
+        maxBudget: 0,
+        minPeople: 3
+    },
+    {
+        mood: "juegos",
+        title: "⏱️ Reto de 60 segundos",
+        text: "Inventad pruebas que haya que completar en menos de un minuto.",
+        time: "45 minutos",
+        maxBudget: 0,
+        minPeople: 2
+    },
+
+    // 🎲 SORPRESA
+    {
+        mood: "sorpresa",
+        title: "🎲 Plan al azar",
+        text: "Escribid varias actividades en papeles, mezcladlos y elegid una al azar.",
+        time: "1 hora",
+        maxBudget: 5,
+        minPeople: 1
+    },
+    {
+        mood: "sorpresa",
+        title: "📍 Explorad un sitio nuevo",
+        text: "Elegid una zona que no conozcáis demasiado y descubridla juntos.",
+        time: "1-2 horas",
+        maxBudget: 5,
+        minPeople: 2
+    },
+    {
+        mood: "sorpresa",
+        title: "🎨 Reto creativo sorpresa",
+        text: "Elegid al azar algo para dibujar, construir o inventar.",
+        time: "45 minutos",
+        maxBudget: 0,
+        minPeople: 1
+    }
+
+];
+
+document.querySelectorAll(".idea-people").forEach(button => {
+    button.addEventListener("click", () => {
+        ideaPeople = button.dataset.value;
+
+        document.querySelectorAll(".idea-people").forEach(b => {
+            b.classList.remove("selected");
+        });
+
+        button.classList.add("selected");
+    });
+});
+let lastIdeaTitle = null;
+
+function generateIdea() {
+
+    const people = ideaPeople === "4" ? 4 : Number(ideaPeople);
+    const money = Number(ideaMoney);
+
+    let availableIdeas = ideas.filter(idea => {
+
+        const correctMood =
+            ideaMood === "sorpresa" ||
+            idea.mood === ideaMood;
+
+        const correctBudget =
+            idea.maxBudget <= money;
+
+        const correctPeople =
+            people >= idea.minPeople;
+
+        return correctMood && correctBudget && correctPeople;
+    });
+
+    // Si la última idea vuelve a salir, intentamos quitarla
+    if (availableIdeas.length > 1 && lastIdeaTitle) {
+        const differentIdeas = availableIdeas.filter(
+            idea => idea.title !== lastIdeaTitle
+        );
+
+        if (differentIdeas.length > 0) {
+            availableIdeas = differentIdeas;
+        }
+    }
+
+    // Si no hay ninguna idea que encaje perfectamente,
+    // buscamos solamente por categoría
+    if (availableIdeas.length === 0) {
+
+        availableIdeas = ideas.filter(idea => {
+
+            return (
+                ideaMood === "sorpresa" ||
+                idea.mood === ideaMood
+            );
+
+        });
+    }
+
+    // Elegimos una idea al azar
+    const randomIndex =
+        Math.floor(Math.random() * availableIdeas.length);
+
+    const plan = availableIdeas[randomIndex];
+
+    lastIdeaTitle = plan.title;
+
+    ideaResult.innerHTML = `
+        <div class="plan-card">
+            <h2>${plan.title}</h2>
+
+            <p>${plan.text}</p>
+
+            <p>⏱️ <strong>Duración:</strong> ${plan.time}</p>
+
+            <p>👥 <strong>Personas:</strong> ${plan.minPeople} o más</p>
+
+            <p>💰 <strong>Presupuesto:</strong> hasta ${plan.maxBudget} €</p>
+        </div>
+    `;
+}
+
+generateIdeaButton.addEventListener("click", () => {
+
+    if (!ideaPeople || !ideaMoney || !ideaMood) {
+        alert("⚠️ Elige cuántas personas sois, el presupuesto y qué os apetece.");
+        return;
+    }
+
+    ideaScreen.classList.add("hidden");
+    ideaResultScreen.classList.remove("hidden");
+
+    generateIdea();
+});
+anotherIdeaButton.addEventListener("click", () => {
+
+    generateIdea();
+
+});
+document.querySelectorAll(".idea-money").forEach(button => {
+    button.addEventListener("click", () => {
+        ideaMoney = button.dataset.value;
+
+        document.querySelectorAll(".idea-money").forEach(b => {
+            b.classList.remove("selected");
+        });
+
+        button.classList.add("selected");
+    });
+});
+document.querySelectorAll(".idea-mood").forEach(button => {
+    button.addEventListener("click", () => {
+        ideaMood = button.dataset.value;
+
+        document.querySelectorAll(".idea-mood").forEach(b => {
+            b.classList.remove("selected");
+        });
+
+        button.classList.add("selected");
+    });
+});
 
 
 /* ================================
