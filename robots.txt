@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://webs713.github.io/PlanNow/sitemap.xml
