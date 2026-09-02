@@ -59,8 +59,99 @@
                 </button>
             </div>
         </section>
+                <!-- PANTALLA DE TIPO DE PLAN -->
+        <section id="planTypeScreen" class="screen hidden">
 
+            <div class="hero">
 
+                <h1>¿Qué quieres hacer?</h1>
+
+                <p>Elige cómo quieres encontrar tu próximo plan.</p>
+
+                <button id="findPlaceButton" class="main-button">
+                    📍 Encontrar un lugar
+                </button>
+
+                <button id="ideaButton" class="secondary-button">
+                    💡 Dame una idea
+                </button>
+
+            </div>
+
+        </section>
+        <!-- PANTALLA DE IDEAS -->
+        <section id="ideaScreen" class="screen hidden">
+
+            <div class="questions-container">
+
+                <h1>💡 Dame una idea</h1>
+
+                <p>Cuéntame qué te apetece y te propongo un plan.</p>
+
+                <div class="question">
+
+                    <h2>👥 ¿Cuántas personas sois?</h2>
+
+                    <div class="options">
+                        <button class="idea-people" data-value="1">1</button>
+                        <button class="idea-people" data-value="2">2</button>
+                        <button class="idea-people" data-value="3">3</button>
+                        <button class="idea-people" data-value="4">4+</button>
+                    </div>
+
+                </div>
+
+                <div class="question">
+
+                    <h2>💰 ¿Cuánto queréis gastar?</h2>
+
+                    <div class="options">
+                        <button class="idea-money" data-value="0">Gratis</button>
+                        <button class="idea-money" data-value="5">Hasta 5 €</button>
+                        <button class="idea-money" data-value="10">Hasta 10 €</button>
+                        <button class="idea-money" data-value="20">Hasta 20 €</button>
+                    </div>
+
+                </div>
+
+                <div class="question">
+
+                    <h2>🎯 ¿Qué os apetece?</h2>
+
+                    <div class="options">
+                        <button class="idea-mood" data-value="aventura">🚲 Aventura</button>
+                        <button class="idea-mood" data-value="videojuegos">🎮 Videojuegos</button>
+                        <button class="idea-mood" data-value="deporte">🏃 Deporte</button>
+                        <button class="idea-mood" data-value="creativo">🎨 Creativo</button>
+                        <button class="idea-mood" data-value="juegos">🧩 Juegos y retos</button>
+                        <button class="idea-mood" data-value="sorpresa">🎲 Sorpresa</button>
+                    </div>
+
+                </div>
+
+                <button id="generateIdeaButton" class="main-button">
+                    💡 Dame mi plan
+                </button>
+
+            </div>
+
+        </section>
+<!-- RESULTADO DE LA IDEA -->
+<section id="ideaResultScreen" class="screen hidden">
+
+    <div class="results-container">
+
+        <h1>💡 Tu plan</h1>
+
+        <div id="ideaResult"></div>
+
+        <button id="anotherIdeaButton" class="secondary-button">
+            ← Elegir otra idea
+        </button>
+
+    </div>
+
+</section>
         <!-- PANTALLA DE PREGUNTAS -->
         <section id="questionsScreen" class="screen hidden">
 
