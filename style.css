@@ -1,0 +1,593 @@
+```css
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #eef6ff, #f8fbff);
+    color: #1f2937;
+    min-height: 100vh;
+}
+
+
+/* =========================
+   BARRA SUPERIOR
+========================= */
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    width: 100%;
+    min-height: 70px;
+
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 35px;
+
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: #2563eb;
+}
+
+
+/* =========================
+   NAVEGACIÓN
+========================= */
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+nav > button,
+#languageButton {
+    border: none;
+    background: transparent;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    color: #374151;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+nav > button:hover,
+#languageButton:hover {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+
+/* =========================
+   SELECTOR DE IDIOMA
+========================= */
+
+.language-container {
+    position: relative;
+}
+
+#languageButton {
+    border: 1px solid #dbeafe;
+    background: #f8fbff;
+    color: #2563eb;
+}
+
+#languageButton:hover {
+    background: #eff6ff;
+}
+
+
+/* MENÚ DE IDIOMAS */
+
+.language-menu {
+    position: absolute;
+
+    top: calc(100% + 8px);
+    right: 0;
+
+    width: 180px;
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+
+    padding: 8px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+    display: none;
+}
+
+.language-menu.show {
+    display: block;
+}
+
+.language-menu button {
+    width: 100%;
+
+    border: none;
+    background: transparent;
+
+    text-align: left;
+
+    padding: 11px 12px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    color: #374151;
+
+    transition: 0.2s;
+}
+
+.language-menu button:hover {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+
+/* =========================
+   PANTALLAS
+========================= */
+
+.screen {
+    width: 100%;
+    min-height: calc(100vh - 70px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================
+   INICIO
+========================= */
+
+.hero {
+    width: 100%;
+    max-width: 800px;
+
+    background: white;
+
+    border-radius: 24px;
+
+    padding: 70px 40px;
+
+    text-align: center;
+
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+
+    animation: appear 0.5s ease;
+}
+
+.hero-icon {
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: 52px;
+    color: #2563eb;
+    margin-bottom: 10px;
+}
+
+.hero h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: 0 auto 30px;
+
+    font-size: 18px;
+    line-height: 1.6;
+
+    color: #6b7280;
+}
+
+
+/* =========================
+   BOTONES
+========================= */
+
+.main-button {
+    border: none;
+
+    background: #2563eb;
+    color: white;
+
+    padding: 14px 28px;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.25);
+}
+
+.main-button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.secondary-button {
+    border: 1px solid #bfdbfe;
+
+    background: white;
+    color: #2563eb;
+
+    padding: 12px 20px;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.secondary-button:hover {
+    background: #eff6ff;
+}
+
+
+/* =========================
+   PREGUNTAS
+========================= */
+
+.questions-container {
+    width: 100%;
+    max-width: 800px;
+
+    background: white;
+
+    border-radius: 24px;
+
+    padding: 40px;
+
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+
+    animation: appear 0.5s ease;
+}
+
+.questions-container > h1 {
+    text-align: center;
+
+    font-size: 34px;
+
+    color: #2563eb;
+
+    margin-bottom: 35px;
+}
+
+.question {
+    margin-bottom: 30px;
+}
+
+.question h2 {
+    font-size: 19px;
+    margin-bottom: 14px;
+}
+
+
+/* =========================
+   INPUT CIUDAD
+========================= */
+
+#cityInput {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    outline: none;
+
+    margin-bottom: 10px;
+}
+
+#cityInput:focus {
+    border-color: #2563eb;
+
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+#locationMessage {
+    margin-top: 10px;
+
+    font-size: 14px;
+
+    color: #6b7280;
+}
+
+
+/* =========================
+   OPCIONES
+========================= */
+
+.options {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.options button {
+    border: 1px solid #dbeafe;
+
+    background: #f8fbff;
+
+    color: #374151;
+
+    padding: 12px 17px;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.options button:hover {
+    border-color: #93c5fd;
+
+    background: #eff6ff;
+
+    color: #2563eb;
+}
+
+.options button.selected {
+    background: #2563eb;
+
+    color: white;
+
+    border-color: #2563eb;
+}
+
+
+/* =========================
+   RESULTADOS
+========================= */
+
+.results-container {
+    width: 100%;
+    max-width: 1000px;
+
+    background: white;
+
+    border-radius: 24px;
+
+    padding: 40px;
+
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+
+    animation: appear 0.5s ease;
+}
+
+.results-container > h1 {
+    text-align: center;
+
+    color: #2563eb;
+
+    font-size: 34px;
+
+    margin-bottom: 30px;
+}
+
+
+/* TARJETAS DE PLANES */
+
+.place-card {
+    background: #f8fbff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    margin-bottom: 20px;
+
+    position: relative;
+
+    transition: 0.2s;
+}
+
+.place-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.place-image {
+    width: 100%;
+
+    max-height: 260px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.place-content {
+    padding: 22px;
+}
+
+.place-content h2 {
+    margin-bottom: 10px;
+
+    color: #111827;
+}
+
+.place-content p {
+    margin-bottom: 8px;
+
+    line-height: 1.5;
+
+    color: #4b5563;
+}
+
+.place-actions {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 18px;
+}
+
+
+/* FAVORITOS */
+
+.favorite-button {
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    width: 42px;
+    height: 42px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: white;
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+
+    transition: 0.2s;
+}
+
+.favorite-button:hover {
+    transform: scale(1.08);
+}
+
+
+/* BOTÓN VOLVER */
+
+#anotherButton {
+    display: block;
+
+    margin: 25px auto 0;
+}
+
+
+/* =========================
+   ANIMACIÓN
+========================= */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   MÓVIL
+========================= */
+
+@media (max-width: 700px) {
+
+    .topbar {
+        padding: 12px 15px;
+
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    nav {
+        width: 100%;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+    }
+
+    .hero {
+        padding: 45px 20px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero h2 {
+        font-size: 25px;
+    }
+
+    .questions-container,
+    .results-container {
+        padding: 25px 18px;
+    }
+
+    .screen {
+        padding: 25px 12px;
+    }
+
+    .language-menu {
+        right: 0;
+    }
+}
+```

@@ -1,0 +1,232 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlanNow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="topbar">
+        <div class="logo">🗺️ PlanNow</div>
+
+        <nav>
+            <button id="navHome">Inicio</button>
+            <button id="navSearch">Buscar planes</button>
+            <button id="navFavorites">❤️ Favoritos</button>
+
+            <div class="language-container">
+                <button id="languageButton">🌐 ES ▾</button>
+                
+
+                <div id="languageMenu" class="language-menu">
+                    <button data-language="es">🇪🇸 Español</button>
+                    <button data-language="en">🇬🇧 English</button>
+                    <button data-language="fr">🇫🇷 Français</button>
+                    <button data-language="de">🇩🇪 Deutsch</button>
+                    <button data-language="it">🇮🇹 Italiano</button>
+                    <button data-language="pt">🇵🇹 Português</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- PANTALLA DE INICIO -->
+        <section id="welcomeScreen" class="screen">
+            <div class="hero">
+                <div class="hero-icon">🗺️</div>
+
+                <h1 id="welcomeTitle">PlanNow</h1>
+
+                <h2 id="welcomeQuestion">
+                    ¿Qué hacemos hoy?
+                </h2>
+
+                <p id="welcomeSubtitle">
+                    Encuentra planes cerca de ti según tus gustos, presupuesto y compañía.
+                </p>
+
+                <button id="startButton" class="main-button">
+                    Empezar
+                </button>
+            </div>
+        </section>
+
+
+        <!-- PANTALLA DE PREGUNTAS -->
+        <section id="questionsScreen" class="screen hidden">
+
+            <div class="questions-container">
+
+                <h1 id="questionsTitle">
+                    Encuentra tu plan
+                </h1>
+
+                <!-- CIUDAD -->
+                <div class="question">
+                    <h2 id="cityTitle">
+                        📍 ¿Dónde estás?
+                    </h2>
+
+                    <input
+                        type="text"
+                        id="cityInput"
+                        placeholder="Escribe una ciudad..."
+                    >
+
+                    <button id="locationButton" class="secondary-button">
+                        📍 Usar mi ubicación
+                    </button>
+
+                    <p id="locationMessage"></p>
+                </div>
+
+
+                <!-- PERSONAS -->
+                <div class="question">
+                    <h2 id="peopleTitle">
+                        👥 ¿Cuántas personas sois?
+                    </h2>
+
+                    <div class="options">
+                        <button class="people" data-value="1">1</button>
+                        <button class="people" data-value="2">2</button>
+                        <button class="people" data-value="3">3</button>
+                        <button class="people" data-value="4">4+</button>
+                    </div>
+                </div>
+
+
+                <!-- DINERO -->
+                <div class="question">
+                    <h2 id="moneyTitle">
+                        💰 ¿Cuánto quieres gastar?
+                    </h2>
+
+                    <div class="options">
+                        <button class="money" data-value="0">Gratis</button>
+                        <button class="money" data-value="5">Hasta 5 €</button>
+                        <button class="money" data-value="10">Hasta 10 €</button>
+                        <button class="money" data-value="20">Hasta 20 €</button>
+                    </div>
+                </div>
+
+
+                <!-- TIPO DE PLAN -->
+                <div class="question">
+                    <h2 id="moodTitle">
+                        🎯 ¿Qué te apetece?
+                    </h2>
+
+                    <div class="options">
+                        <button class="mood" data-value="cultura">🏛️ Cultura</button>
+                        <button class="mood" data-value="deporte">⚽ Deporte</button>
+                        <button class="mood" data-value="naturaleza">🌳 Naturaleza</button>
+                        <button class="mood" data-value="ocio">🎮 Ocio</button>
+                        <button class="mood" data-value="comida">🍔 Comida</button>
+                    </div>
+                </div>
+
+
+                <button id="generateButton" class="main-button">
+                    🔎 Buscar planes
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- PANTALLA DE RESULTADOS -->
+        <section id="resultScreen" class="screen hidden">
+
+            <div class="results-container">
+
+                <h1 id="resultsTitle">
+                    Tus planes
+                </h1>
+
+                <div id="result"></div>
+
+                <button id="anotherButton" class="secondary-button">
+                    ← Buscar de nuevo
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+    <section id="accountScreen" class="screen" style="display: none;">
+    <div class="card">
+        <h1>👤 Cuenta</h1>
+
+        <p>Inicia sesión o crea una cuenta para guardar tus favoritos.</p>
+
+        <button id="loginButton">🔑 Iniciar sesión</button>
+
+        <button id="registerButton">📝 Crear cuenta</button>
+
+        <button id="backFromAccountButton">
+            ← Volver
+        </button>
+    </div>
+</section>
+<section id="registerScreen" class="screen" style="display: none;">
+
+    <div class="card">
+
+        <h1>📝 Crear cuenta</h1>
+
+        <p>Regístrate en PlanNow</p>
+
+        <input
+            type="text"
+            id="registerName"
+            placeholder="Tu nombre"
+        >
+
+        <input
+            type="email"
+            id="registerEmail"
+            placeholder="Tu correo electrónico"
+        >
+
+        <input
+            type="password"
+            id="registerPassword"
+            placeholder="Contraseña"
+        >
+
+        <input
+            type="password"
+            id="registerPassword2"
+            placeholder="Repite la contraseña"
+        >
+
+        <button id="createAccountButton">
+            📝 Crear cuenta
+        </button>
+
+        <button id="backFromRegisterButton">
+            ← Volver
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
+```
